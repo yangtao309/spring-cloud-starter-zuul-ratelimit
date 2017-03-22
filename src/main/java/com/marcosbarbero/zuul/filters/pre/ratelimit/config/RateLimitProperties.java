@@ -18,7 +18,7 @@ public class RateLimitProperties {
 
     public static final String PREFIX = "zuul.ratelimit";
 
-    private Map<String, Policy> policies = new LinkedHashMap<>();
+//    private Map<String, Policy> policies = new LinkedHashMap<>();
     private boolean enabled;
     private boolean behindProxy;
 }

@@ -4,6 +4,7 @@ import com.marcosbarbero.zuul.filters.pre.ratelimit.config.Policy;
 import com.marcosbarbero.zuul.filters.pre.ratelimit.config.Rate;
 import com.marcosbarbero.zuul.filters.pre.ratelimit.config.RateLimitProperties;
 import com.marcosbarbero.zuul.filters.pre.ratelimit.config.RateLimiter;
+import com.marcosbarbero.zuul.filters.pre.ratelimit.config.RateLimiterStore;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 
@@ -39,6 +40,7 @@ public class RateLimitFilter extends ZuulFilter {
     private final RateLimiter limiter;
     private final RateLimitProperties properties;
     private final RouteLocator routeLocator;
+    private final RateLimiterStore rateLimiterQuery;
 
     @Override
     public String filterType() {
@@ -93,7 +95,8 @@ public class RateLimitFilter extends ZuulFilter {
     }
 
     private Policy policy() {
-        return (route() != null) ? this.properties.getPolicies().get(route().getId()) : null;
+//        return (route() != null) ? this.properties.getPolicies().get(route().getId()) : null;
+        return (route() != null) ? rateLimiterQuery.findAll().get(route().getId()) : null;
     }
 
     private String key(final HttpServletRequest request, final List<Type> types) {

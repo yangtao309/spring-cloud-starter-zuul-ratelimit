@@ -27,9 +27,9 @@ Usage
 Add the dependency on pom.xml
 ```
 <dependency>
-    <groupId>com.marcosbarbero.cloud</groupId>
-    <artifactId>spring-cloud-zuul-ratelimit</artifactId>
-    <version>1.0.7.RELEASE</version>
+    <groupId>io.github.yangtao309</groupId>
+    <artifactId>spring-cloud-starter-zuul-ratelimit</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
 </dependency>
 ```
 
@@ -40,14 +40,22 @@ zuul:
   ratelimit:
     enabled: true #default false
     behind-proxy: true #default false
-    policies:
-      myServiceId:
-        limit: 10
-        refresh-interval: 60 #default value (in seconds)
-        type: #optional
-          - user
-          - origin
-          - url
+```
+
+jdbc (mysql table)
+you can reference [zuul-route-jdbc-spring-cloud-starter](https://github.com/yangtao309/zuul-route-jdbc-spring-cloud-starter) to config the routes id.
+notice: the table zuul_routes id field can be match this table (zuul_rate_limiter) id column.
+```
+CREATE TABLE zuul_rate_limiter(
+    id VARCHAR(50),
+    refresh_interval INT(3),
+    `limit` INT(3),
+    `type` VARCHAR(500),
+    PRIMARY KEY(id)
+);
+
+INSERT INTO zuul_rate_limiter(id, refresh_interval, limit, `type`) VALUES ('api-account', 60, 10, 'url');
+
 ```
 
 Contributing
@@ -56,17 +64,3 @@ Contributing
 Spring Cloud Zuul Rate Limit is released under the non-restrictive Apache 2.0 license, and follows a very 
 standard Github development process, using Github tracker for issues and merging pull requests into master. 
 If you want to contribute even something trivial please do not hesitate, but follow the guidelines below.
-
-###Code of Conduct
-
-This project adheres to the Contributor Covenant 
-[code of conduct](https://github.com/marcosbarbero/spring-cloud-starter-zuul-ratelimit/blob/master/docs/code-of-conduct.adoc). 
-By participating, you are expected to uphold this code. Please report unacceptable behavior to marcos.hgb@gmail.com.
-
-Footnote
----
-This project currently works only with redis so in order to make this strategy work you'll need to have a 
-redis up and running and configure it's connection.
-
-Any doubt open an [issue](https://github.com/marcosbarbero/spring-cloud-starter-zuul-ratelimit/issues).  
-Any fix send me a [Pull Request](https://github.com/marcosbarbero/spring-cloud-starter-zuul-ratelimit/pulls).

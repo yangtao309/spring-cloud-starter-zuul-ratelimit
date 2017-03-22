@@ -4,6 +4,7 @@ import com.marcosbarbero.zuul.filters.pre.ratelimit.RateLimitFilter;
 import com.marcosbarbero.zuul.filters.pre.ratelimit.config.redis.RedisRateLimiter;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.netflix.zuul.filters.RouteLocator;
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.jdbc.core.JdbcOperations;
 
 /**
  * @author Marcos Barbero
@@ -23,8 +25,14 @@ public class RateLimitAutoConfiguration {
 
     @Bean
     public RateLimitFilter rateLimiterFilter(RateLimiter rateLimiter, RateLimitProperties rateLimitProperties,
-                                             RouteLocator routeLocator) {
-        return new RateLimitFilter(rateLimiter, rateLimitProperties, routeLocator);
+                                             RouteLocator routeLocator, RateLimiterStore rateLimiterStore) {
+        return new RateLimitFilter(rateLimiter, rateLimitProperties, routeLocator, rateLimiterStore);
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public RateLimiterStore rateLimiterStore(JdbcOperations jdbcOperations) {
+        return new JdbcRateLimiterStore(jdbcOperations);
     }
 
     @ConditionalOnClass(RedisTemplate.class)

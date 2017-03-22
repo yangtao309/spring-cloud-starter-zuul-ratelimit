@@ -17,12 +17,27 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Policy {
+    private String id;
     private Long refreshInterval = 60L;
     private Long limit;
     private List<Type> type = new ArrayList<>();
 
     public enum Type {
-        ORIGIN, USER, URL
+        ORIGIN, USER, URL;
+
+        static Type convert(String key) {
+            if (null == key) {
+                throw new IllegalArgumentException();
+            }
+
+            Type[] types = Type.values();
+            for (Type type : types) {
+                if (type.toString().equalsIgnoreCase(key)) {
+                    return type;
+                }
+            }
+            return null;
+        }
     }
 
 }
