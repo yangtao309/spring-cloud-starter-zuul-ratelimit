@@ -1,13 +1,10 @@
-package com.marcosbarbero.zuul.filters.pre.ratelimit.config;
+package io.github.yangtao309.zuul.filters.pre.ratelimit.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 import lombok.Data;
 
-import static com.marcosbarbero.zuul.filters.pre.ratelimit.config.RateLimitProperties.PREFIX;
+import static io.github.yangtao309.zuul.filters.pre.ratelimit.config.RateLimitProperties.PREFIX;
 
 /**
  * @author Marcos Barbero

@@ -1,10 +1,10 @@
-package com.marcosbarbero.zuul.filters.pre.ratelimit;
+package io.github.yangtao309.zuul.filters.pre.ratelimit;
 
-import com.marcosbarbero.zuul.filters.pre.ratelimit.config.Policy;
-import com.marcosbarbero.zuul.filters.pre.ratelimit.config.Rate;
-import com.marcosbarbero.zuul.filters.pre.ratelimit.config.RateLimitProperties;
-import com.marcosbarbero.zuul.filters.pre.ratelimit.config.RateLimiter;
-import com.marcosbarbero.zuul.filters.pre.ratelimit.config.RateLimiterStore;
+import io.github.yangtao309.zuul.filters.pre.ratelimit.config.Policy;
+import io.github.yangtao309.zuul.filters.pre.ratelimit.config.Rate;
+import io.github.yangtao309.zuul.filters.pre.ratelimit.config.RateLimitProperties;
+import io.github.yangtao309.zuul.filters.pre.ratelimit.config.RateLimiter;
+import io.github.yangtao309.zuul.filters.pre.ratelimit.config.RateLimiterStore;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 
@@ -21,10 +21,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import lombok.AllArgsConstructor;
 
-import static com.marcosbarbero.zuul.filters.pre.ratelimit.config.Policy.Type;
-import static com.marcosbarbero.zuul.filters.pre.ratelimit.config.Policy.Type.ORIGIN;
-import static com.marcosbarbero.zuul.filters.pre.ratelimit.config.Policy.Type.URL;
-import static com.marcosbarbero.zuul.filters.pre.ratelimit.config.Policy.Type.USER;
+import static io.github.yangtao309.zuul.filters.pre.ratelimit.config.Policy.Type;
+import static io.github.yangtao309.zuul.filters.pre.ratelimit.config.Policy.Type.ORIGIN;
+import static io.github.yangtao309.zuul.filters.pre.ratelimit.config.Policy.Type.URL;
+import static io.github.yangtao309.zuul.filters.pre.ratelimit.config.Policy.Type.USER;
 
 /**
  * @author Marcos Barbero

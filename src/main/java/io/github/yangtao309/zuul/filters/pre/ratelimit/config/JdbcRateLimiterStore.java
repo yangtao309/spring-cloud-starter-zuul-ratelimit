@@ -1,4 +1,4 @@
-package com.marcosbarbero.zuul.filters.pre.ratelimit.config;
+package io.github.yangtao309.zuul.filters.pre.ratelimit.config;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;

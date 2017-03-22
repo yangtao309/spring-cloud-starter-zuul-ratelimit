@@ -1,4 +1,4 @@
-package com.marcosbarbero.zuul.filters.pre.ratelimit.config;
+package io.github.yangtao309.zuul.filters.pre.ratelimit.config;
 
 /**
  * @author Marcos Barbero

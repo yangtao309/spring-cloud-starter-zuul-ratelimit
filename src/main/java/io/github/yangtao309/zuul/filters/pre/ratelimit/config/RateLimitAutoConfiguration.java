@@ -1,7 +1,7 @@
-package com.marcosbarbero.zuul.filters.pre.ratelimit.config;
+package io.github.yangtao309.zuul.filters.pre.ratelimit.config;
 
-import com.marcosbarbero.zuul.filters.pre.ratelimit.RateLimitFilter;
-import com.marcosbarbero.zuul.filters.pre.ratelimit.config.redis.RedisRateLimiter;
+import io.github.yangtao309.zuul.filters.pre.ratelimit.RateLimitFilter;
+import io.github.yangtao309.zuul.filters.pre.ratelimit.config.redis.RedisRateLimiter;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

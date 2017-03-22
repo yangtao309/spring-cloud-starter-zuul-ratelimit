@@ -1,8 +1,8 @@
-package com.marcosbarbero.zuul.filters.pre.ratelimit.config.redis;
+package io.github.yangtao309.zuul.filters.pre.ratelimit.config.redis;
 
-import com.marcosbarbero.zuul.filters.pre.ratelimit.config.Policy;
-import com.marcosbarbero.zuul.filters.pre.ratelimit.config.Rate;
-import com.marcosbarbero.zuul.filters.pre.ratelimit.config.RateLimiter;
+import io.github.yangtao309.zuul.filters.pre.ratelimit.config.Policy;
+import io.github.yangtao309.zuul.filters.pre.ratelimit.config.RateLimiter;
+import io.github.yangtao309.zuul.filters.pre.ratelimit.config.Rate;
 
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.util.Assert;
